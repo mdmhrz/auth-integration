@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router';
+import './Navbar.css'
 
 const Navbar = () => {
     const links = <>
@@ -7,6 +8,7 @@ const Navbar = () => {
         <li> <NavLink to="/login">Login</NavLink> </li>
         <li> <NavLink to="/register">Register</NavLink> </li>
     </>
+
 
     return (
         <div className="navbar bg-base-100 shadow-sm">
