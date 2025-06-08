@@ -9,13 +9,26 @@ const Navbar = () => {
     // const userInfo = use(AuthContext);
     // console.log("User infor in the nav", userInfo);
 
-    const { user } = use(AuthContext);
+    const { user, signOutUser } = use(AuthContext);
     console.log(user);
+
+    const handleSignOut = () => {
+        signOutUser().then(res => {
+            console.log("sign out success full");
+        }).catch(error => {
+            console.log('error');
+        })
+    }
 
     const links = <>
         <li> <NavLink to="/">Home</NavLink> </li>
         <li> <NavLink to="/login">Login</NavLink> </li>
         <li> <NavLink to="/register">Register</NavLink> </li>
+        <li> <NavLink to="/dashboard">Dashboard</NavLink> </li>
+        {user && <>
+            <li> <NavLink to="/orders">Orders</NavLink> </li>
+            <li> <NavLink to="/profile">Profile</NavLink> </li>
+        </>}
     </>
 
 
@@ -43,7 +56,11 @@ const Navbar = () => {
             </div>
             <div className="navbar-end">
                 {
-                    user ? <a className="btn">Signout</a> : <Link to='/login' className="btn">Button</Link>
+                    user ? <>
+                        <span>{user.email}</span>
+                        <a onClick={handleSignOut} className="btn">Signout</a>
+                    </>
+                        : <Link to='/login' className="btn">Login</Link>
                 }
             </div>
         </div>

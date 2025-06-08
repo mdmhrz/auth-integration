@@ -1,12 +1,13 @@
 // import { createUserWithEmailAndPassword } from 'firebase/auth';
 import React, { use } from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../../contexts/AuthContext';
 // import { auth } from '../../firebase.init';
 
 const Register = () => {
 
-    const { createUser } = use(AuthContext)
+    const { createUser } = use(AuthContext);
+    const navigate = useNavigate();
 
     const handleRegister = e => {
 
@@ -28,6 +29,7 @@ const Register = () => {
         createUser(email, password)
             .then(result => {
                 console.log(result);
+                navigate('/')
             })
             .catch(error => {
                 console.log(error);
@@ -45,7 +47,7 @@ const Register = () => {
                     <label className="label">Password</label>
                     <input type="password" className="input" placeholder="Password" name='password' />
                     <div><a className="link link-hover">Forgot password?</a></div>
-                    <button className="btn btn-neutral mt-4">Login</button>
+                    <button className="btn btn-neutral mt-4">Register</button>
                 </form>
                 <p>Already have an account? please <Link className='underline text-blue-400' to='/login'>Login</Link></p>
             </div>
