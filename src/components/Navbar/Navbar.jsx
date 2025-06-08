@@ -2,11 +2,15 @@ import React, { use } from 'react';
 import { NavLink } from 'react-router';
 import './Navbar.css'
 import { AuthContext } from '../../contexts/AuthContext';
+// import { AuthContext } from '../../contexts/AuthContext';
 
 const Navbar = () => {
 
+    // const userInfo = use(AuthContext);
+    // console.log("User infor in the nav", userInfo);
+
     const userInfo = use(AuthContext);
-    console.log("User infor in the nav", userInfo);
+    console.log(userInfo);
 
     const links = <>
         <li> <NavLink to="/">Home</NavLink> </li>
@@ -25,7 +29,7 @@ const Navbar = () => {
                     <ul
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-
+                        {links}
                     </ul>
                 </div>
                 <a className="btn btn-ghost text-xl">daisyUI</a>
